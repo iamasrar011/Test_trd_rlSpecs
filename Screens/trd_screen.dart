@@ -50,10 +50,17 @@ class TradeScreen extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {
                   // Implement trade execution logic here
+                   //  Submit the trade order to the server
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Trade Executed Successfully'),
+                    ),
+                  );
                 },
                 child: Text('Execute Trade'),
               ),
-            ],
+             ],
+            ),
           ),
         ),
       ),
