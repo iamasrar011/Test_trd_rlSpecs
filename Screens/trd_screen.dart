@@ -9,6 +9,8 @@ class TradeScreen extends StatelessWidget {
         title: Text('Trade'),
       ),
       body: Center(
+         child: Padding(
+          padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -18,7 +20,43 @@ class TradeScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Add trading forms, order types, and execution buttons here
-          ],
+             TextFormField(
+                decoration: InputDecoration(labelText: 'Stock Symbol'),
+              ),
+              SizedBox(height: 10),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Quantity'),
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 10),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Price'),
+                keyboardType: TextInputType.number,
+              ),
+              SizedBox(height: 20),
+              DropdownButtonFormField<String>(
+                items: ['Market Order', 'Limit Order', 'Stop-Loss Order']
+                    .map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (selectedOrderType) {
+                  // Handle selected order type
+                },
+                value: 'Market Order', // Set the default order type
+                decoration: InputDecoration(labelText: 'Order Type'),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Implement trade execution logic here
+                },
+                child: Text('Execute Trade'),
+              )
+            ],
+          ),
         ),
       ),
     );
