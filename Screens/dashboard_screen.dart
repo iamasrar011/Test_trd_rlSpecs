@@ -9,15 +9,19 @@ class DashboardScreen extends StatelessWidget {
         title: Text('Dashboard'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+         child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
             Text(
               'Welcome to Your Dashboard',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
             // Display user portfolio information and widgets here
+             Text('User Portfolio Information Goes Here'),
+              // Add portfolio widgets and charts here
           ],
         ),
       ),
