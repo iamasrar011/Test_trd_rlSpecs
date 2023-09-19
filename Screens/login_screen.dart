@@ -9,16 +9,39 @@ class LoginScreen extends StatelessWidget {
         title: Text('Login'),
       ),
       body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Welcome to Algorithmic Trading!',
+              'Welcome to Algo Tradify',
               style: TextStyle(fontSize: 18),
             ),
             SizedBox(height: 20),
             // Add login form fields and buttons here
-          ],
+             TextFormField(
+                decoration: InputDecoration(labelText: 'Email'),
+              ),
+              SizedBox(height: 10),
+              TextFormField(
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true,
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Implement login logic here
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (context) => DashboardScreen(),
+                    ),
+                  );
+                },
+                child: Text('Login'),
+              ),
+            ],
+          ),
         ),
       ),
     );
