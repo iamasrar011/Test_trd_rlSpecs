@@ -48,12 +48,13 @@ class TradeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Implement your trade screen UI here
         return Scaffold(
       appBar: AppBar(
         title: Text('Trade'),
       ),
       body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -66,15 +67,24 @@ class TradeScreen extends StatelessWidget {
             TextFormField(
                 decoration: InputDecoration(labelText: 'Stock Symbol'),
               ),
+            onChanged: (value) {
+                  stockSymbol = value;
+                },
               SizedBox(height: 10),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Quantity'),
                 keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  quantity = int.tryParse(value) ?? 0;
+                },
               ),
               SizedBox(height: 10),
               TextFormField(
                 decoration: InputDecoration(labelText: 'Price'),
                 keyboardType: TextInputType.number,
+                 onChanged: (value) {
+                  price = double.tryParse(value) ?? 0.0;
+                },
               ),
               SizedBox(height: 20),
               DropdownButtonFormField<String>(
@@ -85,22 +95,19 @@ class TradeScreen extends StatelessWidget {
                     child: Text(value),
                   );
                 }).toList(),
-                onChanged: (selectedOrderType) {
+                onChanged: (value) {
                   // Handle selected order type
+                   selectedOrderType = value;
                 },
-                value: 'Market Order', // Set the default order type
+                value: selectedOrderType, 
                 decoration: InputDecoration(labelText: 'Order Type'),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Implement trade execution logic here
-                   //  Submit the trade order to the server
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Trade Executed Successfully'),
-                    ),
-                  );
+                 // Call the executeTrade function to handle trade execution
+                  executeTrade(context);
+                 
                 },
                 child: Text('Execute Trade'),
               ),
