@@ -20,9 +20,25 @@ class DashboardScreen extends StatelessWidget {
             ),
             SizedBox(height: 20),
             // Display user portfolio information and widgets here
-             Text('User Portfolio Information Goes Here'),
+            Text(
+                'Total Portfolio Value: \$100,000.00',
+                style: TextStyle(fontSize: 16),
+              ),
               // Add portfolio widgets and charts here
-          ],
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Navigate to the TradeScreen
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => TradeScreen(),
+                    ),
+                  );
+                },
+                child: Text('Start Trading'),
+              ),
+            ],
+          ),
         ),
       ),
     );
